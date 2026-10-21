@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: Demo API
+  version: 0.1.0
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /items:
+    get:
+      summary: Lista os itens
+      responses:
+        '200':
+          description: Lista de itens
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: '#/components/schemas/Item' }
+    post:
+      summary: Cria um item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: '#/components/schemas/ItemIn' }
+      responses:
+        '201':
+          description: Item criado
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Item' }
+  /items/{id}:
+    get:
+      summary: Busca um item
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        '200':
+          description: Item
+          content:
+            application/json:
+              schema: { $ref: '#/components/schemas/Item' }
+        '404':
+          description: Item não encontrado
+components:
+  schemas:
+    ItemIn:
+      type: object
+      required: [name]
+      properties:
+        name: { type: string }
+        quantity: { type: integer, default: 1 }
+    Item:
+      allOf:
+        - $ref: '#/components/schemas/ItemIn'
+        - type: object
+          required: [id]
+          properties:
+            id: { type: integer }

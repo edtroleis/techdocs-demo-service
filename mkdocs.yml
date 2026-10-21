@@ -1,0 +1,13 @@
+site_name: Demo Service
+site_description: Documentação do demo-service
+repo_url: https://github.com/edtroleis/techdocs-demo-service
+edit_uri: edit/main/docs/
+nav:
+  - Visão geral: index.md
+  - Arquitetura: architecture.md
+  - API: api.md
+  - Runbook: runbook.md
+  - ADRs:
+      - 0001 - Escolha do FastAPI: adr/0001-escolha-fastapi.md
+plugins:
+  - techdocs-core
