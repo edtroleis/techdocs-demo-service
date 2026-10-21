@@ -1,4 +1,6 @@
 site_name: Demo Service
+# Avisos do mkdocs (links/nav quebrados) viram erro e falham o CI
+strict: true
 site_description: Documentação do demo-service
 repo_url: https://github.com/edtroleis/techdocs-demo-service
 edit_uri: edit/main/docs/
