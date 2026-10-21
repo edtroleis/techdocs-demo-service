@@ -1,6 +1,4 @@
 site_name: Demo Service
-# Avisos do mkdocs (links/nav quebrados) viram erro e falham o CI
-strict: true
 site_description: Documentação do demo-service
 repo_url: https://github.com/edtroleis/techdocs-demo-service
 edit_uri: edit/main/docs/
@@ -13,3 +11,10 @@ nav:
       - 0001 - Escolha do FastAPI: adr/0001-escolha-fastapi.md
 plugins:
   - techdocs-core
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+strict: true
